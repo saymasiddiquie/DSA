@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	string n;
+	cin>>n;
+	for(int i=0;i<n.length();i++){
+	    
+	    bool repeated=false;
+	    for(int j=0;j<n.length();j++){
+	        if(i!=j && n[i]==n[j]){
+	            repeated=true;
+	            break;
+	        }
+	    }
+	    if(repeated==false){
+	        cout<<n[i];
+	        return 0;
+	    }
+	    
+	}
+	
+
+}
