@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    string n;
+    getline(cin, n);
+    string largest = "";
+    string current = "";
+    for (int i = 0; i < n.length(); i++) {
+        if (n[i] != ' ') {
+            current += n[i];
+        }
+        else {
+            if (current.length() > largest.length()) {
+                largest = current;
+            }
+            current = "";
+        }
+    }
+    if (current.length() > largest.length()) {
+        largest = current;
+    }
+    cout << largest;
+}
