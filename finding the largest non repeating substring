@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    int maxLength = 0;
+
+    for(int i = 0; i < s.length(); i++) {
+
+        string current = "";
+
+        for(int j = i; j < s.length(); j++) {
+
+            bool repeated = false;
+            for(int k = 0; k < current.length(); k++) {
+                if(current[k] == s[j]) {
+                    repeated = true;
+                    break;
+                }
+            }
+
+            if(repeated == true) {
+                break;   
+            }
+
+            current += s[j];
+        }
+
+        if(current.length() > maxLength) {
+            maxLength = current.length();
+        }
+    }
+
+    cout << maxLength;
+}
