@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    string n;
+    getline(cin, n);
+    string smallest = "";
+    string current = "";
+    for (int i = 0; i < n.length(); i++) {
+        if (n[i] != ' ') {
+            current += n[i];
+        }
+        else {
+            if (smallest=="" || current.length() < smallest.length()) {
+                smallest = current;
+            }
+            current = "";
+        }
+    }
+    if (smallest=="" || current.length() < smallest.length()) {
+        smallest = current;
+    }
+    cout << smallest;
+}
