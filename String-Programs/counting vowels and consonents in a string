@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	string  n;
+	cin>>n;
+	string vowelSet="aeiouAEIOU";
+	int vowels=0;
+	int consonents=0;
+	for(int i=0;i<n.length();i++){
+	    bool isVowels=false;
+	    for(int j=0;j<vowelSet.length();j++){
+	        if(n[i]==vowelSet[j]){
+	            isVowels=true;
+	            break;
+	        }
+	    }
+	    if(isVowels){
+	        vowels++;
+	    }
+	    else if(isalpha(n[i])){
+	        consonents++;
+	    
+	    }
+	}
+	cout<<vowels<<endl;
+	cout<<consonents;
+
+}
