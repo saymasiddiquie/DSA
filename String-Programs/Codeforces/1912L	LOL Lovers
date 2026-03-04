@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+ 
+    string s;
+    cin >> s;
+ 
+    int totalL = 0, totalO = 0;
+ 
+    for(int i = 0; i < n; i++) {
+        if(s[i] == 'L')
+            totalL++;
+        else
+            totalO++;
+    }
+ 
+    int myL = 0, myO = 0;
+ 
+    for(int i = 0; i < n - 1; i++) {
+ 
+        if(s[i] == 'L')
+            myL++;
+        else
+            myO++;
+ 
+        int friendL = totalL - myL;
+        int friendO = totalO - myO;
+ 
+       
+        if(myL != friendL && myO != friendO) {
+            cout << i + 1;
+            return 0;
+        }
+    }
+ 
+    cout << -1;
+}
