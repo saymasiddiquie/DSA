@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string t;
+    cin >> t;
+
+    int n = t.length();
+    string s = "";
+
+    int mid;
+
+    if(n % 2 == 0)
+        mid = n/2 - 1;
+    else
+        mid = n/2;
+
+    s += t[mid];
+
+    int left = mid - 1;
+    int right = mid + 1;
+
+    while(left >= 0 || right < n) {
+        if(right < n) {
+            s += t[right];
+            right++;
+        }
+        if(left >= 0) {
+            s += t[left];
+            left--;
+        }
+    }
+
+    cout << s;
+}
