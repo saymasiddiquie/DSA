@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string a,b,c;
+    getline(cin,a);
+    getline(cin,b);
+    getline(cin,c);
+    int c1=0, c2=0, c3=0;
+    for(int i=0;i<a.length();i++){
+        if(a[i]=='a' || a[i]=='e'|| a[i]=='i' || a[i]=='o' || a[i]=='u' ){
+            c1++;
+            
+        }
+    }
+    for(int i=0;i<b.length();i++){
+        if(b[i]=='a' || b[i]=='e'|| b[i]=='i' || b[i]=='o' || b[i]=='u' ){
+            c2++;
+        }
+    }
+    for(int i=0;i<c.length();i++){
+        if(c[i]=='a' || c[i]=='e'|| c[i]=='i' || c[i]=='o' || c[i]=='u' ){
+            c3++;
+        }
+    }
+    if(c1==5 && c2==7 && c3==5){
+        cout<<"YES";
+    }
+    else{
+        cout<<"NO";
+    }
+    
+    
+}
