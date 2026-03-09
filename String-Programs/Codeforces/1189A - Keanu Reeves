@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n;
+	cin>>n;
+	string s;
+	cin>>s;
+	int c1=0,c2=0;
+	for(int i=0;i<n;i++){
+	    if(s[i]=='1'){
+	        c1++;
+	    }
+	    else if(s[i]=='0'){
+	        c2++;
+	    }
+	    
+	}
+	if(c1!=c2){
+	    cout<<1<<endl;
+	    cout<<s<<endl;
+	}
+	else{
+	    cout<<2<<endl;
+	    cout<<s[0]<<" ";
+	    for(int i=1;i<n;i++){
+	        cout<<s[i];
+	    }
+	}
+	return 0;
+
+}
