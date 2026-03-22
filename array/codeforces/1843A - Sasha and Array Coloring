@@ -9,20 +9,16 @@ int main() {
         int n;
         cin >> n;
 
-        vector<int> a(n);
+        int a[50];
         for(int i = 0; i < n; i++) {
             cin >> a[i];
         }
 
-        sort(a.begin(), a.end());
+        sort(a, a + n);
 
-        int i = 0, j = n - 1;
         int cost = 0;
-
-        while(i < j) {
-            cost += (a[j] - a[i]);
-            i++;
-            j--;
+        for(int i = 0; i < n/2; i++) {
+            cost += (a[n - 1 - i] - a[i]);
         }
 
         cout << cost << endl;
