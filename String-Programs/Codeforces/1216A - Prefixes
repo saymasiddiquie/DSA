@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    int operations = 0;
+
+    for (int i = 0; i < n; i += 2) {
+        if (s[i] == s[i + 1]) {
+            operations++;
+            s[i] = 'a';
+            s[i + 1] = 'b';  // make it "ab"
+        }
+    }
+
+    cout << operations << endl;
+    cout << s << endl;
+
+    return 0;
+}
