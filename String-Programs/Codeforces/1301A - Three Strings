@@ -1,26 +1,30 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main() {
     int t;
     cin >> t;
-    
+
     while(t--) {
         string a, b, c;
         cin >> a >> b >> c;
-        
+
+        int n = a.length();
         bool possible = true;
-        
-        for(int i = 0; i < a.size(); i++) {
+
+        for(int i = 0; i < n; i++) {
+            // check condition
             if(c[i] != a[i] && c[i] != b[i]) {
                 possible = false;
                 break;
             }
         }
-        
-        if(possible) cout << "YES\n";
-        else cout << "NO\n";
+
+        if(possible == true)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
     }
-    
+
     return 0;
 }
