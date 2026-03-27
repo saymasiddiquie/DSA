@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int decimalToAnyBase(int n, int b) {
+    int rv = 0; // Release Value (Result)
+    int p = 1;  // Power of 10 (to place digits correctly)
+
+    while (n > 0) {
+        int dig = n % b; // Get remainder (digit in new base)
+        n = n / b;       // Reduce number
+        
+        rv += dig * p;   // Add digit to the correct position
+        p = p * 10;      // Increase power for next digit
+    }
+
+    return rv;
+}
+
+int main() {
+    int n = 6, b = 2;
+    cout << decimalToAnyBase(n, b); // Output: 110
+    return 0;
+}
