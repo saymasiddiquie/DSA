@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+/**
+ * Function to find the frequency of a digit in a number
+ * @param n: The input number
+ * @param d: The digit to count
+ * @return: The total count of digit d in n
+ */
+int getDigitFrequency(int n, int d) {
+    int count = 0;
+    
+    // Edge case: If n is 0 and we are looking for digit 0
+    if (n == 0 && d == 0) {
+        return 1;
+    }
+
+    // Process the number
+    while (n > 0) {
+        int lastDigit = n % 10; // Extract
+        if (lastDigit == d) {   // Compare
+            count++;
+        }
+        n = n / 10;             // Reduce
+    }
+    
+    return count;
+}
+
+int main() {
+    int n, d;
+    cout << "Enter Number: ";
+    cin >> n;
+    cout << "Enter Digit: ";
+    cin >> d;
+
+    int frequency = getDigitFrequency(n, d);
+    cout << "The digit " << d << " occurs " << frequency << " times." << endl;
+
+    return 0;
+}
