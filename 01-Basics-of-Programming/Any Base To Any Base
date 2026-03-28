@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+// Helper 1: Convert Any Base (b) to Decimal (10)
+int anyToDecimal(int n, int b) {
+    int rv = 0;
+    int p = 1;
+
+    cout << "\n--- Converting to Decimal ---\n";
+
+    while (n > 0) {
+        cout << "\nCurrent n: " << n << endl;
+
+        int dig = n % 10;
+        cout << "Digit extracted: " << dig << endl;
+
+        n = n / 10;
+        cout << "Remaining n: " << n << endl;
+
+        rv += dig * p;
+        cout << "Updated rv: " << rv << endl;
+
+        p = p * b;
+        cout << "Updated power (p): " << p << endl;
+    }
+
+    cout << "Decimal Result: " << rv << endl;
+    return rv;
+}
+
+// Helper 2: Convert Decimal (10) to Any Base (b)
+int decimalToAny(int n, int b) {
+    int rv = 0;
+    int p = 1;
+
+    cout << "\n--- Converting Decimal to Base " << b << " ---\n";
+
+    while (n > 0) {
+        cout << "\nCurrent n: " << n << endl;
+
+        int dig = n % b;
+        cout << "Remainder (digit): " << dig << endl;
+
+        n = n / b;
+        cout << "Remaining n: " << n << endl;
+
+        rv += dig * p;
+        cout << "Updated rv: " << rv << endl;
+
+        p = p * 10;
+        cout << "Updated power (p): " << p << endl;
+    }
+
+    cout << "Converted Result: " << rv << endl;
+    return rv;
+}
+
+// Bridge Function
+int anyToAny(int n, int b1, int b2) {
+    cout << "\n===== START CONVERSION =====\n";
+    
+    int dec = anyToDecimal(n, b1);
+    int finalRes = decimalToAny(dec, b2);
+
+    cout << "\n===== END CONVERSION =====\n";
+    return finalRes;
+}
+
+int main() {
+    int n = 111001, b1 = 2, b2 = 8;
+
+    cout << "Original Number: " << n << " (Base " << b1 << ")\n";
+
+    int result = anyToAny(n, b1, b2);
+
+    cout << "\nFinal Answer: " << result << " (Base " << b2 << ")" << endl;
+
+    return 0;
+}
