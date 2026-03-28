@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int anyBaseToDecimal(int n, int b) {
+    int rv = 0; // Result Value
+    int p = 1;  // b^0 initially
+
+    cout << "\nStep-by-step execution:\n";
+
+    while (n > 0) {
+        cout << "\nCurrent n: " << n << endl;
+
+        int dig = n % 10;
+        cout << "Extracted digit (dig): " << dig << endl;
+
+        n = n / 10;
+        cout << "Updated n (n / 10): " << n << endl;
+
+        rv += dig * p;
+        cout << "Updated result (rv = rv + dig * p): " << rv << endl;
+
+        p = p * b;
+        cout << "Updated power (p = p * b): " << p << endl;
+    }
+
+    return rv;
+}
+
+int main() {
+    int n, b;
+    cout << "Enter number and its base: ";
+    cin >> n >> b;
+
+    int result = anyBaseToDecimal(n, b);
+
+    cout << "\nFinal Decimal Value: " << result << endl;
+    return 0;
+}
