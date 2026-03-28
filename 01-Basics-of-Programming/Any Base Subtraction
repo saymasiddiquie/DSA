@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+int getDifference(int b, int n1, int n2) {
+    int rv = 0;
+    int c = 0; // borrow
+    int p = 1;
+
+    cout << "\nStep-by-step subtraction:\n";
+
+    while (n2 > 0 || n1 > 0) {
+        cout << "\n----------------------\n";
+
+        int d1 = n1 % 10;
+        int d2 = n2 % 10;
+
+        cout << "d1: " << d1 << " , d2: " << d2 << " , borrow: " << c << endl;
+
+        n1 = n1 / 10;
+        n2 = n2 / 10;
+
+        d2 = d2 + c; // apply previous borrow
+
+        cout << "After applying borrow, d2: " << d2 << endl;
+
+        int d;
+        if (d2 >= d1) {
+            c = 0;
+            d = d2 - d1;
+            cout << "No borrow needed\n";
+        } else {
+            c = -1;
+            d = (d2 + b) - d1;
+            cout << "Borrow taken, new d2: " << d2 + b << endl;
+        }
+
+        cout << "Current digit: " << d << endl;
+        cout << "New borrow: " << c << endl;
+
+        rv += d * p;
+        cout << "Updated result (rv): " << rv << endl;
+
+        p = p * 10;
+    }
+
+    return rv;
+}
+
+int main() {
+    int b, n1, n2;
+
+    cout << "Enter base: ";
+    cin >> b;
+
+    cout << "Enter first number (n1): ";
+    cin >> n1;
+
+    cout << "Enter second number (n2): ";
+    cin >> n2;
+
+    cout << "\nCalculating " << n2 << " - " << n1 << " in base " << b << endl;
+
+    int result = getDifference(b, n1, n2);
+
+    cout << "\nFinal Answer: " << result << endl;
+
+    return 0;
+}
