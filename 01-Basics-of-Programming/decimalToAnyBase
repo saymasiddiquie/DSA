@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int decimalToAnyBase(int n, int b) {
+    int rv = 0; // Result value
+    int p = 1;  // Power of 10
+
+    cout << "Step-by-step execution:\n";
+
+    while (n > 0) {
+        cout << "\nCurrent n: " << n << endl;
+
+        int dig = n % b;
+        cout << "Remainder (dig = n % b): " << dig << endl;
+
+        n = n / b;
+        cout << "Updated n (n / b): " << n << endl;
+
+        rv += dig * p;
+        cout << "Updated result (rv): " << rv << endl;
+
+        p = p * 10;
+        cout << "Updated power (p): " << p << endl;
+    }
+
+    return rv;
+}
+
+int main() {
+    int n = 6, b = 2;
+    int result = decimalToAnyBase(n, b);
+
+    cout << "\nFinal Answer: " << result << endl;
+
+    return 0;
+}
