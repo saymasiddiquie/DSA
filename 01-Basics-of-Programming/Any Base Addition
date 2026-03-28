@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int getSum(int b, int n1, int n2) {
+    int rv = 0; // Result Value
+    int c = 0;  // Carry
+    int p = 1;  // Power of 10
+
+    cout << "\nStep-by-step addition:\n";
+
+    while (n1 > 0 || n2 > 0 || c > 0) {
+        cout << "\n----------------------\n";
+
+        int d1 = n1 % 10;
+        int d2 = n2 % 10;
+
+        cout << "d1: " << d1 << " , d2: " << d2 << " , carry: " << c << endl;
+
+        n1 = n1 / 10;
+        n2 = n2 / 10;
+
+        int sum = d1 + d2 + c;
+        cout << "Sum: " << sum << endl;
+
+        c = sum / b;
+        int d = sum % b;
+
+        cout << "New digit: " << d << endl;
+        cout << "New carry: " << c << endl;
+
+        rv += d * p;
+        cout << "Updated result (rv): " << rv << endl;
+
+        p = p * 10;
+    }
+
+    return rv;
+}
+
+int main() {
+    int b = 8, n1 = 777, n2 = 1;
+
+    cout << "Adding " << n1 << " and " << n2 << " in base " << b << endl;
+
+    int result = getSum(b, n1, n2);
+
+    cout << "\nFinal Answer: " << result << endl;
+
+    return 0;
+}
