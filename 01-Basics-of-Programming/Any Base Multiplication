@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+
+// Addition function (required)
+int getSum(int b, int n1, int n2) {
+    int rv = 0, c = 0, p = 1;
+
+    while (n1 > 0 || n2 > 0 || c > 0) {
+        int d1 = n1 % 10;
+        int d2 = n2 % 10;
+
+        n1 /= 10;
+        n2 /= 10;
+
+        int sum = d1 + d2 + c;
+        c = sum / b;
+        int d = sum % b;
+
+        rv += d * p;
+        p *= 10;
+    }
+    return rv;
+}
+
+// 1. Single digit multiplication
+int getProductWithSingleDigit(int b, int n1, int d2) {
+    int rv = 0, c = 0, p = 1;
+
+    cout << "\nMultiplying " << n1 << " with digit " << d2 << endl;
+
+    while (n1 > 0 || c > 0) {
+        cout << "\n--- Step ---\n";
+
+        int d1 = n1 % 10;
+        n1 = n1 / 10;
+
+        cout << "d1: " << d1 << ", d2: " << d2 << ", carry: " << c << endl;
+
+        int prod = (d1 * d2) + c;
+
+        cout << "Product: " << prod << endl;
+
+        c = prod / b;
+        int d = prod % b;
+
+        cout << "Digit: " << d << ", New Carry: " << c << endl;
+
+        rv += d * p;
+        cout << "Partial Result: " << rv << endl;
+
+        p = p * 10;
+    }
+
+    cout << "Single Product Result: " << rv << endl;
+    return rv;
+}
+
+// 2. Full multiplication
+int getProduct(int b, int n1, int n2) {
+    int rv = 0, p = 1;
+
+    cout << "\nStarting Full Multiplication\n";
+
+    while (n2 > 0) {
+        cout << "\n====================\n";
+
+        int d2 = n2 % 10;
+        n2 = n2 / 10;
+
+        cout << "Processing digit of n2: " << d2 << endl;
+
+        int sprd = getProductWithSingleDigit(b, n1, d2);
+
+        cout << "After shifting (×" << p << "): " << sprd * p << endl;
+
+        rv = getSum(b, rv, sprd * p);
+
+        cout << "Updated Result: " << rv << endl;
+
+        p = p * 10;
+    }
+
+    return rv;
+}
+
+int main() {
+    int b, n1, n2;
+
+    cout << "Enter base: ";
+    cin >> b;
+
+    cout << "Enter first number (n1): ";
+    cin >> n1;
+
+    cout << "Enter second number (n2): ";
+    cin >> n2;
+
+    cout << "\nCalculating " << n1 << " * " << n2 << " in base " << b << endl;
+
+    int result = getProduct(b, n1, n2);
+
+    cout << "\nFinal Answer: " << result << endl;
+
+    return 0;
+}
