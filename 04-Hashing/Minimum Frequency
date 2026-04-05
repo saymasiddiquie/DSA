@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    int arr[n];
+    for(int i=0; i<n; i++) cin >> arr[i];
+
+    // 1. Counting Phase
+    int hash[13] = {0}; 
+    for(int i=0; i<n; i++) {
+        hash[arr[i]] += 1;
+    }
+
+    // 2. Finding Phase
+    int minFreq = n + 1; // Start higher than any possible frequency
+    int result = -1;
+
+    for(int i=0; i < 13; i++) { 
+        if(hash[i] > 0 && hash[i] < minFreq) {
+            minFreq = hash[i];
+            result = i;
+        }
+    }
+
+    cout << "Number: " << result << " | Freq: " << minFreq << endl;
+    return 0;
+}
