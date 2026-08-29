@@ -1,0 +1,15 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        vector<int> seen;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]!=0){
+                seen.push_back(nums[i]);
+            }
+        }  
+        while(seen.size()<nums.size())  {
+            seen.push_back(0);
+        } 
+        nums=seen;  
+    }
+};
