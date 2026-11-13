@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isValid(string s) {
-        char stack[100000];
+        char stack[10000];
         int top=-1;
         for(char c :s){
             if(c=='[' || c=='{' || c=='('){
